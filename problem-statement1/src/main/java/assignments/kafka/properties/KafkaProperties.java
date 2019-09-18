@@ -14,6 +14,5 @@ import lombok.Setter;
 @Getter
 @SuppressWarnings("unused")
 public class KafkaProperties {
-	private Map<String, String> kafkaConsumer;
 	private Map<String, String> kafkaProducer;
 }

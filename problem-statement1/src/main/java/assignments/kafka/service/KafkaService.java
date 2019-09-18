@@ -15,8 +15,15 @@ import lombok.extern.slf4j.Slf4j;
 @SuppressWarnings("unused")
 public class KafkaService {
 
+	
+	
+	private void start() {
+		log.info("start service");
+	}
+
 	public void main() {
 		log.info("main service");
 
+		start();
 	}
 }

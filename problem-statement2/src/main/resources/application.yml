@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: problem-statement2
+
+logging:
+  level:
+    root: info
+    assignments.kafka: debug
+  file: /var/tmp/apps/problem-statement2/problem-statement2
+
+kafka:
+  kafkaStreams:
+    bootstrap.servers: '172.17.5.36:7092'
+    application.id: 'ps2'
+
+  metaData:
+    topic: ps110
+
+app:
+  paths:
+    filesDir: '/var/tmp/files'

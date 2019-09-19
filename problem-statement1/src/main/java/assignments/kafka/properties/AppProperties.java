@@ -9,9 +9,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Component
-@ConfigurationProperties(prefix = "kafka")
+@ConfigurationProperties(prefix = "app")
 @Setter
 @Getter
-public class KafkaProperties {
-	private Map<String, String> kafkaProducer;
+public class AppProperties {
+	private Map<String, String> paths;
 }

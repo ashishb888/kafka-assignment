@@ -3,7 +3,8 @@ spring:
   name: problem-statement1
 
 logging:
-  level:    root: info  file: /var/log/apps/problem-statement1/problem-statement1
+  level:    root: info
+    assignments.kafka: debug  file: /var/log/apps/problem-statement1/problem-statement1
 
 kafka:
   kafkaProducer:
@@ -15,3 +16,9 @@ kafka:
     retries: 1
     linger.ms: 10
     compression.type: 'lz4'
+    key.serializer: 'org.apache.kafka.common.serialization.StringSerializer'
+    value.serializer: 'assignments.kafka.common.serialization.StockTradeSerializer'
+
+app:
+  paths:
+    filesDir: '/var/tmp/files'

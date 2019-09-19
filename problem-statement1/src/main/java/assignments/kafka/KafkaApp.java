@@ -27,7 +27,9 @@ public class KafkaApp implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		log.info("run service");
 
-		kafkaService.main();
+		// args[0]: --spring.output.ansi.enabled=always
+		log.info("nThreads: " + args[1]);
+		kafkaService.main(Integer.valueOf(args[1]));
 	}
 
 }

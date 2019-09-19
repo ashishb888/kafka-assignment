@@ -1,0 +1,1 @@
+Header: symbol,series,open,high,low,close,last,prevClose,totTrdQty,totTrdVal,timestamp,totalTrades,isin

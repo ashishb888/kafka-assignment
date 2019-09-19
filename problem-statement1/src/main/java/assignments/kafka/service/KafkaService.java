@@ -85,10 +85,17 @@ public class KafkaService {
 		send(nThreads);
 	}
 
+	private void close() throws Exception {
+		log.debug("close service");
+
+		Runtime.getRuntime().addShutdownHook(new Thread(producer::close));
+	}
+
 	private void init() {
 		log.debug("init service");
 
 		topic = kp.getMetaData().get("topic");
+		log.info("topic: " + topic);
 
 		producer = appUtils.producer(kp.getKafkaProducer());
 	}

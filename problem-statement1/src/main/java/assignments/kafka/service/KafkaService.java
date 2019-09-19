@@ -89,6 +89,7 @@ public class KafkaService {
 		log.debug("init service");
 
 		topic = kp.getMetaData().get("topic");
+
 		producer = appUtils.producer(kp.getKafkaProducer());
 	}
 

@@ -28,8 +28,8 @@ public class KafkaApp implements CommandLineRunner {
 		log.info("run service");
 
 		// args[0]: --spring.output.ansi.enabled=always
-		log.info("nThreads: " + args[1]);
-		kafkaService.main(Integer.valueOf(args[1]));
+		log.info("nThreads: " + args[0]);
+		kafkaService.main(Integer.valueOf(args[0]));
 	}
 
 }

@@ -2,11 +2,13 @@ package assignments.kafka.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +38,7 @@ public class KafkaService {
 	private AppUtils appUtils;
 	@Autowired
 	private AppProperties ap;
+	private String topic;
 
 	private void send(int nThreads) throws Exception {
 		log.debug("send service");
@@ -55,62 +58,38 @@ public class KafkaService {
 			});
 		});
 
-		es.shutdown();
+		// es.shutdown();
 	}
 
 	private void task(String file) throws IOException {
 		log.debug("task service");
+		log.debug("file: " + file);
+
 		CsvSchema csvSchema = CsvSchema.emptySchema().withHeader();
 		CsvMapper csvMapper = new CsvMapper();
 
 		MappingIterator<StockTrade> orders = csvMapper.readerFor(StockTrade.class).with(csvSchema)
 				.readValues(new File(file));
 
-		orders.readAll().stream().limit(10).forEach(r -> {
-			log.info("r: " + r);
+		List<StockTrade> records = orders.readAll();
+		log.debug("records.size(): " + records.size());
+
+		records.stream().forEach(r -> {
+			producer.send(new ProducerRecord<String, StockTrade>(topic, r.getSymbol(), r));
 		});
-
-//		try (Reader reader = Files.newBufferedReader(file)) {
-//			Iterable<CSVRecord> csvRecords = CSVFormat.DEFAULT.withDelimiter(',').withQuote(null).withHeader(
-//					"SYMBOL,SERIES,OPEN,HIGH,LOW,CLOSE,LAST,PREVCLOSE,TOTTRDQTY,TOTTRDVAL,TIMESTAMP,TOTALTRADES,ISIN,")
-//					.parse(reader);
-//			for (CSVRecord csvRecord : csvRecords) {
-//				StockTrade st = new StockTrade();
-//				st.setSymbol("SYMBOL");
-//				st.setSeries("SERIES");
-//			}
-//		}
-
 	}
 
 	private void start(int nThreads) throws Exception {
 		log.debug("start service");
 
-//		ExecutorService es = Executors.newFixedThreadPool(2);
-//
-//		for (int i = 0; i < 10; i++) {
-//			int li = i;
-//			es.submit(() -> {
-//				log.info(li + "started");
-//				try {
-//					Thread.sleep(10000);
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
-//
-//				log.info(li + "ended");
-//			});
-//		}
-//
-//		es.shutdown();
 		send(nThreads);
 	}
 
 	private void init() {
 		log.debug("init service");
 
-		// producer();
-		// producer = appUtils.producer(kp.getKafkaProducer());
+		topic = kp.getMetaData().get("topic");
+		producer = appUtils.producer(kp.getKafkaProducer());
 	}
 
 	public void main(int nThreads) {

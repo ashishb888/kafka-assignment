@@ -58,7 +58,7 @@ public class KafkaService {
 			});
 		});
 
-		// es.shutdown();
+		// es.shutdown(); // records loss
 	}
 
 	private void task(String file) throws IOException {

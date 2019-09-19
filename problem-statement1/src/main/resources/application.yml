@@ -1,10 +1,12 @@
 spring:
- application:
-  name: problem-statement1
+  application:
+    name: problem-statement1
 
 logging:
-  level:    root: info
-    assignments.kafka: debug  file: /var/log/apps/problem-statement1/problem-statement1
+  level:
+    root: info
+    assignments.kafka: debug
+  file: /var/tmp/apps/problem-statement1/problem-statement1
 
 kafka:
   kafkaProducer:

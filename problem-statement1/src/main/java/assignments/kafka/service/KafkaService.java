@@ -75,7 +75,7 @@ public class KafkaService {
 		log.debug("records.size(): " + records.size());
 
 		records.stream().forEach(r -> {
-			producer.send(new ProducerRecord<String, StockTrade>(topic, r.getSymbol(), r));
+			producer.send(new ProducerRecord<String, StockTrade>(topic, r.getTimestamp(), r));
 		});
 	}
 

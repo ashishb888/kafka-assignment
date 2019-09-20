@@ -14,7 +14,7 @@ kafka:
     application.id: 'ps2'
 
   metaData:
-    topic: ps111
+    topic: ps1-ts1
 
 app:
   paths:

@@ -71,4 +71,45 @@ Done.
 Deleting all internal/auto-created topics for application ps2
 Done.
 
+----------==----------
+Print key and/or value
 
+./bin/kafka-console-consumer.sh --bootstrap-server localhost:7092 --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=false --property print.value=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer  --topic ps1-ts1
+
+{"symbol":"XLENERGY","series":"BE","open":1.05,"high":1.05,"low":1.0,"close":1.0,"last":1.0,"prevClose":1.05,"totTrdQty":150,"totTrdVal":155.0,"timestamp":"09-JAN-2019","totalTrades":2.0,"isin":"INE183H01011"}
+{"symbol":"XPROINDIA","series":"EQ","open":43.9,"high":44.0,"low":42.3,"close":42.45,"last":42.3,"prevClose":43.85,"totTrdQty":2604,"totTrdVal":111213.25,"timestamp":"09-JAN-2019","totalTrades":22.0,"isin":"INE445C01015"}
+{"symbol":"YESBANK","series":"EQ","open":193.95,"high":193.95,"low":181.5,"close":186.45,"last":186.55,"prevClose":192.35,"totTrdQty":63673200,"totTrdVal":1.201106086675E10,"timestamp":"09-JAN-2019","totalTrades":352457.0,"isin":"INE528G01027"}
+{"symbol":"ZEEL","series":"EQ","open":453.1,"high":461.65,"low":445.8,"close":451.25,"last":452.0,"prevClose":451.65,"totTrdQty":6334834,"totTrdVal":2.87315317805E9,"timestamp":"09-JAN-2019","totalTrades":75533.0,"isin":"INE256A01028"}
+{"symbol":"ZEEL","series":"P2","open":7.55,"high":7.6,"low":7.55,"close":7.6,"last":7.6,"prevClose":7.6,"totTrdQty":1258538,"totTrdVal":9536088.1,"timestamp":"09-JAN-2019","totalTrades":29.0,"isin":"INE256A04022"}
+{"symbol":"ZEELEARN","series":"EQ","open":35.6,"high":35.85,"low":34.0,"close":34.5,"last":34.85,"prevClose":35.7,"totTrdQty":143240,"totTrdVal":4978651.95,"timestamp":"09-JAN-2019","totalTrades":617.0,"isin":"INE565L01011"}
+{"symbol":"ZEEMEDIA","series":"EQ","open":24.5,"high":24.9,"low":24.2,"close":24.25,"last":24.25,"prevClose":23.95,"totTrdQty":403940,"totTrdVal":9890754.35,"timestamp":"09-JAN-2019","totalTrades":1513.0,"isin":"INE966H01019"}
+{"symbol":"ZENITHBIR","series":"BE","open":0.8,"high":0.8,"low":0.7,"close":0.8,"last":0.8,"prevClose":0.75,"totTrdQty":91608,"totTrdVal":72303.2,"timestamp":"09-JAN-2019","totalTrades":47.0,"isin":"INE318D01020"}
+{"symbol":"ZENITHEXPO","series":"EQ","open":41.1,"high":41.1,"low":40.0,"close":40.35,"last":40.35,"prevClose":41.05,"totTrdQty":240,"totTrdVal":9680.7,"timestamp":"09-JAN-2019","totalTrades":7.0,"isin":"INE058B01018"}
+{"symbol":"ZENSARTECH","series":"EQ","open":228.25,"high":234.45,"low":228.25,"close":232.2,"last":233.0,"prevClose":228.25,"totTrdQty":35063,"totTrdVal":8123238.25,"timestamp":"09-JAN-2019","totalTrades":1236.0,"isin":"INE520A01027"}
+{"symbol":"ZENTEC","series":"EQ","open":74.05,"high":76.2,"low":73.25,"close":73.75,"last":73.25,"prevClose":75.1,"totTrdQty":26975,"totTrdVal":2012540.65,"timestamp":"09-JAN-2019","totalTrades":649.0,"isin":"INE251B01027"}
+{"symbol":"ZICOM","series":"EQ","open":6.65,"high":6.65,"low":6.5,"close":6.65,"last":6.55,"prevClose":6.6,"totTrdQty":7259,"totTrdVal":47756.3,"timestamp":"09-JAN-2019","totalTrades":36.0,"isin":"INE871B01014"}
+
+--------------------
+./bin/kafka-console-consumer.sh --bootstrap-server localhost:7092 --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property print.value=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer  --topic ps1-ts1
+
+JAN-2019","totalTrades":75533.0,"isin":"INE256A01028"}
+09-JAN-2019     {"symbol":"ZEEL","series":"P2","open":7.55,"high":7.6,"low":7.55,"close":7.6,"last":7.6,"prevClose":7.6,"totTrdQty":1258538,"totTrdVal":9536088.1,"timestamp":"09-JAN-2019","totalTrades":29.0,"isin":"INE256A04022"}
+09-JAN-2019     {"symbol":"ZEELEARN","series":"EQ","open":35.6,"high":35.85,"low":34.0,"close":34.5,"last":34.85,"prevClose":35.7,"totTrdQty":143240,"totTrdVal":4978651.95,"timestamp":"09-JAN-2019","totalTrades":617.0,"isin":"INE565L01011"}
+09-JAN-2019     {"symbol":"ZEEMEDIA","series":"EQ","open":24.5,"high":24.9,"low":24.2,"close":24.25,"last":24.25,"prevClose":23.95,"totTrdQty":403940,"totTrdVal":9890754.35,"timestamp":"09-JAN-2019","totalTrades":1513.0,"isin":"INE966H01019"}
+09-JAN-2019     {"symbol":"ZENITHBIR","series":"BE","open":0.8,"high":0.8,"low":0.7,"close":0.8,"last":0.8,"prevClose":0.75,"totTrdQty":91608,"totTrdVal":72303.2,"timestamp":"09-JAN-2019","totalTrades":47.0,"isin":"INE318D01020"}
+09-JAN-2019     {"symbol":"ZENITHEXPO","series":"EQ","open":41.1,"high":41.1,"low":40.0,"close":40.35,"last":40.35,"prevClose":41.05,"totTrdQty":240,"totTrdVal":9680.7,"timestamp":"09-JAN-2019","totalTrades":7.0,"isin":"INE058B01018"}
+09-JAN-2019     {"symbol":"ZENSARTECH","series":"EQ","open":228.25,"high":234.45,"low":228.25,"close":232.2,"last":233.0,"prevClose":228.25,"totTrdQty":35063,"totTrdVal":8123238.25,"timestamp":"09-JAN-2019","totalTrades":1236.0,"isin":"INE520A01027"}
+09-JAN-2019     {"symbol":"ZENTEC","series":"EQ","open":74.05,"high":76.2,"low":73.25,"close":73.75,"last":73.25,"prevClose":75.1,"totTrdQty":26975,"totTrdVal":2012540.65,"timestamp":"09-JAN-2019","totalTrades":649.0,"isin":"INE251B01027"}
+09-JAN-2019     {"symbol":"ZICOM","series":"EQ","open":6.65,"high":6.65,"low":6.5,"close":6.65,"last":6.55,"prevClose":6.6,"totTrdQty":7259,"totTrdVal":47756.3,"timestamp":"09-JAN-2019","totalTrades":36.0,"isin":"INE871B01014"}
+09-JAN-2019     {"symbol":"ZODIACLOTH","series":"EQ","open":137.05,"high":139.85,"low":136.1,"close":138.8,"last":139.0,"prevClose":137.0,"totTrdQty":1155,"totTrdVal":160382.5,"timestamp":"09-JAN-2019","totalTrades":38.0,"isin":"INE206B01013"}
+09-JAN-2019     {"symbol":"ZODJRDMKJ","series":"EQ","open":40.1,"high":43.0,"low":37.1,"close":42.0,"last":42.0,"prevClose":43.0,"totTrdQty":1580,"totTrdVal":65064.95,"timestamp":"09-JAN-2019","totalTrades":42.0,"isin":"INE077B01018"}
+09-JAN-2019     {"symbol":"ZOTA","series":"SM","open":252.25,"high":253.25,"low":251.5,"close":251.5,"last":251.5,"prevClose":252.85,"totTrdQty":17500,"totTrdVal":4414575.0,"timestamp":"09-JAN-2019","totalTrades":24.0,"isin":"INE358U01012"}
+
+
+----------==----------
+
+./bin/kafka-console-consumer.sh --bootstrap-server localhost:7092 --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property print.value=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer  --property value.deserializer=org.apache.kafka.common.serialization.DoubleDeserializer --topic ps1-ts1-out
+
+07-JAN-2019     7.71776961175E9
+08-JAN-2019     8.0807185982E9
+09-JAN-2019     1.22997380748E10

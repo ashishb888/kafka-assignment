@@ -62,6 +62,9 @@ public class KafkaStreamService {
 
 		source.groupBy((k, v) -> v.getTimestamp()).count().toStream().to(topic + "out");
 
+//		source.groupBy((k, v) -> v.getTimestamp()).count().toStream().to(topic + "out",
+//				Produced.with(Serdes.String(), Serdes.Long()));
+
 		final Topology topology = builder.build();
 		final KafkaStreams streams = new KafkaStreams(topology, configs());
 		final CountDownLatch latch = new CountDownLatch(1);

@@ -40,3 +40,9 @@ GROUP           CONSUMER-ID                                                     
 ps2             ps2-de776f32-48a0-484c-9555-9aa04f68bde1-StreamThread-1-consumer-784933c2-0eca-4a24-9f00-40c5eea311e4 /172.17.12.134  ps2-de776f32-48a0-484c-9555-9aa04f68bde1-StreamThread-1-consumer 2               ps110(0), ps2-KSTREAM-AGGREGATE-STATE-STORE-0000000002-repartition(0)
 
 ----------==----------
+Reset Stream application position
+
+./bin/kafka-streams-application-reset.sh --bootstrap-servers localhost:7092 --to-offset 0 --execute --application-id ps2
+No input or intermediate topics specified. Skipping seek.
+Deleting all internal/auto-created topics for application ps2
+Done.

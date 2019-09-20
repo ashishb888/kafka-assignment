@@ -46,3 +46,29 @@ Reset Stream application position
 No input or intermediate topics specified. Skipping seek.
 Deleting all internal/auto-created topics for application ps2
 Done.
+
+--------------------
+./bin/kafka-streams-application-reset.sh --bootstrap-servers localhost:7092 --to-offset 0 --execute --application-id ps2 --intermediate-topics KSTREAM-AGGREGATE-STATE-STORE-0000000002-repartition,KSTREAM-AGGREGATE-STATE-STORE-0000000002 --input-topics ps111
+Reset-offsets for input topics [ps111]
+Seek-to-end for intermediate topics [KSTREAM-AGGREGATE-STATE-STORE-0000000002-repartition, KSTREAM-AGGREGATE-STATE-STORE-0000000002]
+Following intermediate topics are not found, skipping them
+Topic:KSTREAM-AGGREGATE-STATE-STORE-0000000002-repartition
+Topic:KSTREAM-AGGREGATE-STATE-STORE-0000000002
+Following input topics offsets will be reset to (for consumer group ps2)
+New offset (0) is lower than earliest offset. Value will be set to 0
+Topic: ps111 Partition: 0 Offset: 0
+Done.
+Deleting all internal/auto-created topics for application ps2
+Done.
+
+--------------------
+./bin/kafka-streams-application-reset.sh --bootstrap-servers localhost:7092 --to-offset 0 --execute --application-id ps2  --input-topics ps111
+Reset-offsets for input topics [ps111]
+Following input topics offsets will be reset to (for consumer group ps2)
+New offset (0) is lower than earliest offset. Value will be set to 0
+Topic: ps111 Partition: 0 Offset: 0
+Done.
+Deleting all internal/auto-created topics for application ps2
+Done.
+
+

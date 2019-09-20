@@ -60,9 +60,9 @@ public class KafkaStreamService {
 		KStream<String, StockTrade> source = builder.stream(topic, Consumed.with(Serdes.String(),
 				Serdes.serdeFrom(new StockTradeSerializer(), new StockTradeDeserializer())));
 
-		source.groupBy((k, v) -> v.getTimestamp()).count().toStream().to(topic + "out");
+		source.groupBy((k, v) -> v.getTimestamp()).count().toStream().to(topic + "-out");
 
-//		source.groupBy((k, v) -> v.getTimestamp()).count().toStream().to(topic + "out",
+//		source.groupBy((k, v) -> v.getTimestamp()).count().toStream().to(topic + "-out",
 //				Produced.with(Serdes.String(), Serdes.Long()));
 
 		final Topology topology = builder.build();

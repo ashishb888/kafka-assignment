@@ -16,6 +16,18 @@ kafka:
   metaData:
     topic: ps1-ts1
 
+  kafkaProducer:
+    bootstrap.servers: '172.17.5.36:7092'
+    acks: 'all'
+    #batch.size: 150000
+    #buffer.memory: 33554432
+    #client.id: 8
+    #retries: 1
+    #linger.ms: 10
+    #compression.type: 'lz4' #Records loss
+    key.serializer: 'org.apache.kafka.common.serialization.StringSerializer'
+    value.serializer: 'org.apache.kafka.common.serialization.DoubleSerializer'
+
 app:
   paths:
     filesDir: '/var/tmp/files'

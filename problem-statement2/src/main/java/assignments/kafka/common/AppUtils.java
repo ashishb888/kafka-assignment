@@ -12,7 +12,7 @@ import assignments.kafka.domain.StockTrade;
 @Component
 public class AppUtils {
 
-	public Producer<String, StockTrade> producer(Map<String, String> map) {
+	public Producer<String, Double> producer(Map<String, String> map) {
 		Properties configs = new Properties();
 		configs.putAll(map);
 		return new KafkaProducer<>(configs);

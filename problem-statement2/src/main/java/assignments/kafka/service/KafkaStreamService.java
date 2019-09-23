@@ -3,6 +3,8 @@ package assignments.kafka.service;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
 
+import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.KeyValue;
@@ -11,6 +13,7 @@ import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.Consumed;
 import org.apache.kafka.streams.kstream.KStream;
+import org.apache.kafka.streams.kstream.KTable;
 import org.apache.kafka.streams.kstream.KeyValueMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +42,7 @@ public class KafkaStreamService {
 	@Autowired
 	private AppProperties ap;
 	private String topic;
+	private Producer<String, Double> producer;
 
 	private void stream() throws Exception {
 		log.debug("stream service");
@@ -55,9 +59,13 @@ public class KafkaStreamService {
 		// Produced.with(Serdes.String(), Serdes.Double())).aggregate(initializer,
 		// adder, subtractor);
 
-		source.map((k, v) -> KeyValue.pair(k, v.getTotTrdVal())).groupByKey()
-				.reduce((aggVal, newVal) -> aggVal < newVal ? newVal : aggVal).toStream().to(topic + "-out");
+		// WORKS FINE: Putting output to a topic
+		KTable<String, Double> result = source.map((k, v) -> KeyValue.pair(k, v.getTotTrdVal())).groupByKey()
+				.reduce((aggVal, newVal) -> aggVal < newVal ? newVal : aggVal);
 
+		result.toStream().foreach((k, v) -> {
+			producer.send(new ProducerRecord<String, Double>(k, k, v));
+		});
 //		source.mapValues(StockTrade::getTotTrdVal).groupByKey()
 //				.reduce((aggVal, newVal) -> aggVal < newVal ? newVal : aggVal).toStream().to(topic + "-out");
 
@@ -108,7 +116,7 @@ public class KafkaStreamService {
 
 		topic = kp.getMetaData().get("topic");
 		log.info("topic: " + topic);
-
+		producer = appUtils.producer(kp.getKafkaProducer());
 	}
 
 	public void main() {

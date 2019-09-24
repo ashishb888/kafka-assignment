@@ -27,9 +27,21 @@ public class KafkaApp implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		log.info("run service");
 
-		// args[0]: --spring.output.ansi.enabled=always
+		if (args.length != 1) {
+			log.error("Please pass <nThread> as an argument");
+			System.exit(1);
+		}
+
 		log.info("nThreads: " + args[0]);
-		kafkaService.main(Integer.valueOf(args[0]));
+
+		try {
+			int nThreads = Integer.valueOf(args[0]);
+			kafkaService.main(nThreads);
+		} catch (NumberFormatException e) {
+			log.error("Please provide a valid integer");
+			System.exit(1);
+		}
+
 	}
 
 }

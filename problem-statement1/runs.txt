@@ -86,3 +86,39 @@ files: [/var/tmp/big-files/cm08JAN2019bhav4.csv, /var/tmp/big-files/cm07JAN2019b
 
 $KAFKA_HOME/bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list  localhost:7092  --topic  ps1-bigcap2 --time -1 --offsets 1 | awk -F ":" '{sum += $3} END {print sum'}
 63063
+
+
+----------==----------
+Big run RUN2
+
+cp cm09JAN2019bhav.csv cm09JAN2019bhav1.csv
+for i in {1..10} ; do cat cm09JAN2019bhav1.csv >> cm09JAN2019bhav.csv ; done
+
+ll
+total 7040
+-rw-r----- 1 hdpusr nse  173580 Sep 24 15:37 cm07JAN2019bhav1.csv
+-rw-r----- 1 hdpusr nse 1909380 Sep 24 15:38 cm07JAN2019bhav.csv
+-rw-r----- 1 hdpusr nse  170744 Sep 24 15:39 cm08JAN2019bhav1.csv
+-rw-r----- 1 hdpusr nse 1878184 Sep 24 15:39 cm08JAN2019bhav.csv
+-rw-r----- 1 hdpusr nse  172625 Sep 24 15:39 cm09JAN2019bhav1.csv
+-rw-r----- 1 hdpusr nse 1898875 Sep 24 15:39 cm09JAN2019bhav.csv
+
+du -sh
+6.6M    .
+
+wc -l cm0*
+   1928 cm07JAN2019bhav1.csv
+  21208 cm07JAN2019bhav.csv
+   1892 cm08JAN2019bhav1.csv
+  20812 cm08JAN2019bhav.csv
+   1913 cm09JAN2019bhav1.csv
+  21043 cm09JAN2019bhav.csv
+  68796 total
+
+
+$JAVA_HOME/bin/java -jar problem-statement1-0.0.1-SNAPSHOT.jar 2
+
+files: [/var/tmp/big-files2/cm08JAN2019bhav.csv, /var/tmp/big-files2/cm07JAN2019bhav.csv, /var/tmp/big-files2/cm08JAN2019bhav1.csv, /var/tmp/big-files2/cm07JAN2019bhav1.csv, /var/tmp/big-files2/cm09JAN2019bhav.csv, /var/tmp/big-files2/cm09JAN2019bhav1.csv]
+
+$KAFKA_HOME/bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list  localhost:7092  --topic  ps1-bigcap3 --time -1 --offsets 1 | awk -F ":" '{sum += $3} END {print sum'}
+68790

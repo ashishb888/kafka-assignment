@@ -156,3 +156,37 @@ for i in {7..9}; do ./bin/kafka-console-consumer.sh --bootstrap-server localhost
 09-JAN-2019     1.22997380748E10
 09-JAN-2019     1.22997380748E10
 
+
+----------==----------
+Big run RUN2
+
+./bin/kafka-streams-application-reset.sh --bootstrap-servers localhost:7092 --to-offset 0 --execute --application-id ps2  --input-topics ps1-bigcap3
+
+$JAVA_HOME/bin/java -jar problem-statement2-0.0.1-SNAPSHOT.jar
+
+2019-09-24 15:56:24.015  INFO 146144 --- [           main] a.kafka.service.KafkaStreamService       : topology: Topologies:
+   Sub-topology: 0
+    Source: KSTREAM-SOURCE-0000000000 (topics: [ps1-bigcap3])
+      --> KSTREAM-MAP-0000000001
+    Processor: KSTREAM-MAP-0000000001 (stores: [])
+      --> KSTREAM-FILTER-0000000005
+      <-- KSTREAM-SOURCE-0000000000
+    Processor: KSTREAM-FILTER-0000000005 (stores: [])
+      --> KSTREAM-SINK-0000000004
+      <-- KSTREAM-MAP-0000000001
+    Sink: KSTREAM-SINK-0000000004 (topic: KSTREAM-REDUCE-STATE-STORE-0000000002-repartition)
+      <-- KSTREAM-FILTER-0000000005
+
+  Sub-topology: 1
+    Source: KSTREAM-SOURCE-0000000006 (topics: [KSTREAM-REDUCE-STATE-STORE-0000000002-repartition])
+      --> KSTREAM-REDUCE-0000000003
+    Processor: KSTREAM-REDUCE-0000000003 (stores: [KSTREAM-REDUCE-STATE-STORE-0000000002])
+      --> KTABLE-TOSTREAM-0000000007
+      <-- KSTREAM-SOURCE-0000000006
+    Processor: KTABLE-TOSTREAM-0000000007 (stores: [])
+      --> KSTREAM-FOREACH-0000000008
+      <-- KSTREAM-REDUCE-0000000003
+    Processor: KSTREAM-FOREACH-0000000008 (stores: [])
+      --> none
+      <-- KTABLE-TOSTREAM-0000000007
+

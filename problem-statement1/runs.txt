@@ -1,0 +1,88 @@
+ ----------==----------
+Big run
+
+for j in {7..9}; do for i in {1..10}; do cp cm0"$j"JAN2019bhav.csv cm0"$j"JAN2019bhav"$i".csv ; done ; done
+
+total 5632
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav10.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav1.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav2.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav3.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav4.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav5.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav6.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav7.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav8.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav9.csv
+-rw-r----- 1  173677 Sep 24 14:51 cm07JAN2019bhav.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav10.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav1.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav2.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav3.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav4.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav5.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav6.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav7.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav8.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav9.csv
+-rw-r----- 1  170841 Sep 24 14:51 cm08JAN2019bhav.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav10.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav1.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav2.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav3.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav4.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav5.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav6.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav7.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav8.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav9.csv
+-rw-r----- 1  172722 Sep 24 14:51 cm09JAN2019bhav.csv
+du -sh
+5.6M    .
+
+
+wc -l *
+   1929 cm07JAN2019bhav10.csv
+   1929 cm07JAN2019bhav1.csv
+   1929 cm07JAN2019bhav2.csv
+   1929 cm07JAN2019bhav3.csv
+   1929 cm07JAN2019bhav4.csv
+   1929 cm07JAN2019bhav5.csv
+   1929 cm07JAN2019bhav6.csv
+   1929 cm07JAN2019bhav7.csv
+   1929 cm07JAN2019bhav8.csv
+   1929 cm07JAN2019bhav9.csv
+   1929 cm07JAN2019bhav.csv
+   1893 cm08JAN2019bhav10.csv
+   1893 cm08JAN2019bhav1.csv
+   1893 cm08JAN2019bhav2.csv
+   1893 cm08JAN2019bhav3.csv
+   1893 cm08JAN2019bhav4.csv
+   1893 cm08JAN2019bhav5.csv
+   1893 cm08JAN2019bhav6.csv
+   1893 cm08JAN2019bhav7.csv
+   1893 cm08JAN2019bhav8.csv
+   1893 cm08JAN2019bhav9.csv
+   1893 cm08JAN2019bhav.csv
+   1914 cm09JAN2019bhav10.csv
+   1914 cm09JAN2019bhav1.csv
+   1914 cm09JAN2019bhav2.csv
+   1914 cm09JAN2019bhav3.csv
+   1914 cm09JAN2019bhav4.csv
+   1914 cm09JAN2019bhav5.csv
+   1914 cm09JAN2019bhav6.csv
+   1914 cm09JAN2019bhav7.csv
+   1914 cm09JAN2019bhav8.csv
+   1914 cm09JAN2019bhav9.csv
+   1914 cm09JAN2019bhav.csv
+  63096 total
+  
+ll | wc -l
+34
+ 
+$JAVA_HOME/bin/java -jar problem-statement1-0.0.1-SNAPSHOT.jar 2
+
+files: [/var/tmp/big-files/cm08JAN2019bhav4.csv, /var/tmp/big-files/cm07JAN2019bhav2.csv, /var/tmp/big-files/cm09JAN2019bhav1.csv, /var/tmp/big-files/cm08JAN2019bhav.csv, /var/tmp/big-files/cm07JAN2019bhav7.csv, /var/tmp/big-files/cm09JAN2019bhav.csv, /var/tmp/big-files/cm09JAN2019bhav10.csv, /var/tmp/big-files/cm08JAN2019bhav8.csv, /var/tmp/big-files/cm09JAN2019bhav5.csv, /var/tmp/big-files/cm07JAN2019bhav1.csv, /var/tmp/big-files/cm08JAN2019bhav3.csv, /var/tmp/big-files/cm07JAN2019bhav.csv, /var/tmp/big-files/cm07JAN2019bhav6.csv, /var/tmp/big-files/cm08JAN2019bhav7.csv, /var/tmp/big-files/cm08JAN2019bhav10.csv, /var/tmp/big-files/cm09JAN2019bhav4.csv, /var/tmp/big-files/cm09JAN2019bhav8.csv, /var/tmp/big-files/cm07JAN2019bhav5.csv, /var/tmp/big-files/cm08JAN2019bhav1.csv, /var/tmp/big-files/cm08JAN2019bhav2.csv, /var/tmp/big-files/cm07JAN2019bhav4.csv, /var/tmp/big-files/cm07JAN2019bhav9.csv, /var/tmp/big-files/cm07JAN2019bhav10.csv, /var/tmp/big-files/cm08JAN2019bhav6.csv, /var/tmp/big-files/cm09JAN2019bhav9.csv, /var/tmp/big-files/cm09JAN2019bhav3.csv, /var/tmp/big-files/cm09JAN2019bhav2.csv, /var/tmp/big-files/cm09JAN2019bhav7.csv, /var/tmp/big-files/cm08JAN2019bhav5.csv, /var/tmp/big-files/cm07JAN2019bhav8.csv, /var/tmp/big-files/cm07JAN2019bhav3.csv, /var/tmp/big-files/cm09JAN2019bhav6.csv, /var/tmp/big-files/cm08JAN2019bhav9.csv]
+
+$KAFKA_HOME/bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list  localhost:7092  --topic  ps1-bigcap2 --time -1 --offsets 1 | awk -F ":" '{sum += $3} END {print sum'}
+63063

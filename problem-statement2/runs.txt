@@ -27,3 +27,132 @@ KafkaStreamService RUN 1
 
       
 ----------==----------
+Big run
+
+for j in {7..9}; do for i in {1..10}; do cp cm0"$j"JAN2019bhav.csv cm0"$j"JAN2019bhav"$i".csv ; done ; done
+
+total 5632
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav10.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav1.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav2.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav3.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav4.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav5.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav6.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav7.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav8.csv
+-rw-r----- 1  173677 Sep 24 14:55 cm07JAN2019bhav9.csv
+-rw-r----- 1  173677 Sep 24 14:51 cm07JAN2019bhav.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav10.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav1.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav2.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav3.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav4.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav5.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav6.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav7.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav8.csv
+-rw-r----- 1  170841 Sep 24 14:55 cm08JAN2019bhav9.csv
+-rw-r----- 1  170841 Sep 24 14:51 cm08JAN2019bhav.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav10.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav1.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav2.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav3.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav4.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav5.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav6.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav7.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav8.csv
+-rw-r----- 1  172722 Sep 24 14:55 cm09JAN2019bhav9.csv
+-rw-r----- 1  172722 Sep 24 14:51 cm09JAN2019bhav.csv
+du -sh
+5.6M    .
+
+
+wc -l *
+   1929 cm07JAN2019bhav10.csv
+   1929 cm07JAN2019bhav1.csv
+   1929 cm07JAN2019bhav2.csv
+   1929 cm07JAN2019bhav3.csv
+   1929 cm07JAN2019bhav4.csv
+   1929 cm07JAN2019bhav5.csv
+   1929 cm07JAN2019bhav6.csv
+   1929 cm07JAN2019bhav7.csv
+   1929 cm07JAN2019bhav8.csv
+   1929 cm07JAN2019bhav9.csv
+   1929 cm07JAN2019bhav.csv
+   1893 cm08JAN2019bhav10.csv
+   1893 cm08JAN2019bhav1.csv
+   1893 cm08JAN2019bhav2.csv
+   1893 cm08JAN2019bhav3.csv
+   1893 cm08JAN2019bhav4.csv
+   1893 cm08JAN2019bhav5.csv
+   1893 cm08JAN2019bhav6.csv
+   1893 cm08JAN2019bhav7.csv
+   1893 cm08JAN2019bhav8.csv
+   1893 cm08JAN2019bhav9.csv
+   1893 cm08JAN2019bhav.csv
+   1914 cm09JAN2019bhav10.csv
+   1914 cm09JAN2019bhav1.csv
+   1914 cm09JAN2019bhav2.csv
+   1914 cm09JAN2019bhav3.csv
+   1914 cm09JAN2019bhav4.csv
+   1914 cm09JAN2019bhav5.csv
+   1914 cm09JAN2019bhav6.csv
+   1914 cm09JAN2019bhav7.csv
+   1914 cm09JAN2019bhav8.csv
+   1914 cm09JAN2019bhav9.csv
+   1914 cm09JAN2019bhav.csv
+  63096 total
+  
+ll | wc -l
+34
+
+$JAVA_HOME/bin/java -jar problem-statement2-0.0.1-SNAPSHOT.jar
+
+2019-09-24 15:08:47.561  INFO 129668 --- [           main] a.kafka.service.KafkaStreamService       : topology: Topologies:
+   Sub-topology: 0
+    Source: KSTREAM-SOURCE-0000000000 (topics: [ps1-bigcap2])
+      --> KSTREAM-MAP-0000000001
+    Processor: KSTREAM-MAP-0000000001 (stores: [])
+      --> KSTREAM-FILTER-0000000005
+      <-- KSTREAM-SOURCE-0000000000
+    Processor: KSTREAM-FILTER-0000000005 (stores: [])
+      --> KSTREAM-SINK-0000000004
+      <-- KSTREAM-MAP-0000000001
+    Sink: KSTREAM-SINK-0000000004 (topic: KSTREAM-REDUCE-STATE-STORE-0000000002-repartition)
+      <-- KSTREAM-FILTER-0000000005
+
+  Sub-topology: 1
+    Source: KSTREAM-SOURCE-0000000006 (topics: [KSTREAM-REDUCE-STATE-STORE-0000000002-repartition])
+      --> KSTREAM-REDUCE-0000000003
+    Processor: KSTREAM-REDUCE-0000000003 (stores: [KSTREAM-REDUCE-STATE-STORE-0000000002])
+      --> KTABLE-TOSTREAM-0000000007
+      <-- KSTREAM-SOURCE-0000000006
+    Processor: KTABLE-TOSTREAM-0000000007 (stores: [])
+      --> KSTREAM-FOREACH-0000000008
+      <-- KSTREAM-REDUCE-0000000003
+    Processor: KSTREAM-FOREACH-0000000008 (stores: [])
+      --> none
+      <-- KTABLE-TOSTREAM-0000000007
+
+
+
+$KAFKA_HOME/bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list  localhost:7092  --topic  ps1-bigcap2 --time -1 --offsets 1 | awk -F ":" '{sum += $3} END {print sum'}
+63063
+for i in {7..9}; do ./bin/kafka-console-consumer.sh --bootstrap-server localhost:7092 --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property print.value=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer  --property value.deserializer=org.apache.kafka.common.serialization.DoubleDeserializer --topic 0$i-JAN-2019 ;  done
+07-JAN-2019     7.71776961175E9
+07-JAN-2019     7.71776961175E9
+07-JAN-2019     7.71776961175E9
+07-JAN-2019     7.71776961175E9
+
+08-JAN-2019     8.0807185982E9
+08-JAN-2019     8.0807185982E9
+08-JAN-2019     8.0807185982E9
+08-JAN-2019     8.0807185982E9
+
+09-JAN-2019     1.22997380748E10
+09-JAN-2019     1.22997380748E10
+09-JAN-2019     1.22997380748E10
+09-JAN-2019     1.22997380748E10
+

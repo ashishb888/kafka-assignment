@@ -14,7 +14,7 @@ kafka:
     application.id: 'ps2'
 
   metaData:
-    topic: ps1-ts1
+    topic: ps1-cap4
 
   kafkaProducer:
     bootstrap.servers: '172.17.5.36:7092'

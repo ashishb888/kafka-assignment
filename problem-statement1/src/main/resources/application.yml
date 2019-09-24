@@ -22,8 +22,8 @@ kafka:
     value.serializer: 'assignments.kafka.common.serialization.StockTradeSerializer'
 
   metaData:
-    topic: ps1-ts1
+    topic: ps1-cap4
 
 app:
   paths:
-    filesDir: '/var/tmp/files'
+    filesDir: '/var/tmp/files1'

@@ -7,8 +7,6 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.springframework.stereotype.Component;
 
-import assignments.kafka.domain.StockTrade;
-
 @Component
 public class AppUtils {
 

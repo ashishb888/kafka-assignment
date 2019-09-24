@@ -12,6 +12,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
@@ -67,6 +68,8 @@ public class KafkaService {
 
 		CsvSchema csvSchema = CsvSchema.emptySchema().withHeader();
 		CsvMapper csvMapper = new CsvMapper();
+		// To avoid Unrecognized field "" error, it was coming for trailing ,
+		csvMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
 		MappingIterator<StockTrade> orders = csvMapper.readerFor(StockTrade.class).with(csvSchema)
 				.readValues(new File(file));

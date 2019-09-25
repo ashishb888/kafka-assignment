@@ -1,5 +1,5 @@
 # kafka-assignment
-##Problem statement 1
+## Problem statement 1
 
 ###### Importing
 It is a Maven based, you can import it as a Maven project into an IDE.
@@ -18,7 +18,7 @@ appfilesDir
 ###### Running
 `$JAVA_HOME/bin/java -jar problem-statement1-0.0.1-SNAPSHOT.jar nThreads`
 
-##Problem statement 2
+## Problem statement 2
 ###### Importing
 It is a Maven based, you can import it as a Maven project into an IDE.
 

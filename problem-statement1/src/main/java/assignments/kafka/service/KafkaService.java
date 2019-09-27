@@ -46,7 +46,7 @@ public class KafkaService {
 		log.debug("send service");
 
 		Set<String> files = appUtils.files(ap.getPaths().get("filesDir"));
-		log.info("files: " + files);
+		log.debug("files: " + files);
 
 		ExecutorService es = Executors.newFixedThreadPool(nThreads);
 		CountDownLatch latch = new CountDownLatch(files.size());

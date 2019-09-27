@@ -17,7 +17,7 @@ kafka:
     client.id: 8
     retries: 1
     linger.ms: 10
-    #compression.type: 'lz4' #Records loss
+    compression.type: 'lz4'
     key.serializer: 'org.apache.kafka.common.serialization.StringSerializer'
     value.serializer: 'assignments.kafka.common.serialization.StockTradeSerializer'
 

@@ -1,5 +1,12 @@
-Add latch
+DONE: Add latch
 DONE: Test with given header
 Comments on code
 Change log level in FINAL RELEASE
 Update README.md
+
+
+
+Runs
+	-With given 3 files problem-statement1 & problem-statement2 applications work fine (NO ISSUE)
+	-Make copies of given files (11 for each date) problem-statement1 & problem-statement2 applications work fine (NO ISSUE)
+	-Configured nThreads 1 to 30, works fine (NO ISSUE)

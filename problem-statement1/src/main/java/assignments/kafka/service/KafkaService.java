@@ -117,6 +117,7 @@ public class KafkaService {
 		init();
 		try {
 			start(nThreads);
+			close();
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}

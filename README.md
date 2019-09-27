@@ -1,4 +1,7 @@
 # kafka-assignment
+
+> I have used Project Lombok, you may want to refer [this link](https://projectlombok.org/setup/eclipse) to configure Project Lombok in Eclipse
+
 ## Problem statement 1
 
 ###### Importing

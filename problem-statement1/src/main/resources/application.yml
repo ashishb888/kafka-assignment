@@ -22,7 +22,7 @@ kafka:
     value.serializer: 'assignments.kafka.common.serialization.StockTradeSerializer'
 
   metaData:
-    topic: ps1-cap4
+    topic: ps1-cap17
 
 app:
   paths:

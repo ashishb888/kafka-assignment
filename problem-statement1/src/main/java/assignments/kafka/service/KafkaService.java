@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -48,21 +49,24 @@ public class KafkaService {
 		log.info("files: " + files);
 
 		ExecutorService es = Executors.newFixedThreadPool(nThreads);
+		CountDownLatch latch = new CountDownLatch(files.size());
 
 		files.stream().forEach(f -> {
 			es.submit(() -> {
 				try {
-					task(f);
+					task(f, latch);
 				} catch (IOException e) {
 					log.error(e.getMessage(), e);
 				}
 			});
 		});
 
-		// es.shutdown(); // records loss
+		latch.await();
+		producer.close();
+		es.shutdown();
 	}
 
-	private void task(String file) throws IOException {
+	private void task(String file, CountDownLatch latch) throws IOException {
 		log.debug("task service");
 		log.debug("file: " + file);
 
@@ -80,6 +84,10 @@ public class KafkaService {
 		records.stream().forEach(r -> {
 			producer.send(new ProducerRecord<String, StockTrade>(topic, r.getTimestamp(), r));
 		});
+
+		// producer.flush();
+
+		latch.countDown();
 	}
 
 	private void start(int nThreads) throws Exception {

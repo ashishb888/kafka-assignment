@@ -4,11 +4,14 @@
 
 ## Problem statement 1
 
+###### Description
+This application reads files from a directory, deserialise records to to StockTrade object and send them to the Kafka as JSON
+
 ###### Importing
-It is a Maven based, you can import it as a Maven project into an IDE.
+It is a Maven based application, you can import it as a Maven project into an IDE.
 
 ###### Configuration
-All the configuration is defined in application.yml file.  You may want to change follwing
+All the configuration is defined in application.yml file.  You need to change follwing
 <pre>
 bootstrap.servers
 topic
@@ -22,11 +25,15 @@ appfilesDir
 `$JAVA_HOME/bin/java -jar problem-statement1-0.0.1-SNAPSHOT.jar nThreads`
 
 ## Problem statement 2
+
+###### Description
+Once you finished with `Problem statement 1` you can start this application. Final result contains `timestamp` and `tottrdval`, and I have to send each record to a different topic. So I have used `timestamp` as topic name and put `tottrdval` to it.
+
 ###### Importing
-It is a Maven based, you can import it as a Maven project into an IDE.
+It is a Maven based application, you can import it as a Maven project into an IDE.
 
 ###### Configuration
-All the configuration is defined in application.yml file.  You may want to change follwing
+All the configuration is defined in application.yml file.  You need to change follwing
 <pre>
 bootstrap.servers
 topic

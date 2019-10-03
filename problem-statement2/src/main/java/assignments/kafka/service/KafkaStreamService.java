@@ -14,7 +14,6 @@ import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.Consumed;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.KTable;
-import org.apache.kafka.streams.kstream.KeyValueMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +21,6 @@ import assignments.kafka.common.AppUtils;
 import assignments.kafka.common.serialization.StockTradeDeserializer;
 import assignments.kafka.common.serialization.StockTradeSerializer;
 import assignments.kafka.domain.StockTrade;
-import assignments.kafka.properties.AppProperties;
 import assignments.kafka.properties.KafkaProperties;
 import lombok.extern.slf4j.Slf4j;
 
@@ -32,18 +30,19 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-@SuppressWarnings("unused")
 public class KafkaStreamService {
 
 	@Autowired
 	private KafkaProperties kp;
 	@Autowired
 	private AppUtils appUtils;
-	@Autowired
-	private AppProperties ap;
 	private String topic;
 	private Producer<String, Double> producer;
 
+	/*
+	 * This method start a streaming on provided source topic. And group the records
+	 * by timestamp and find the max total trade val for each group
+	 */
 	private void stream() throws Exception {
 		log.debug("stream service");
 
@@ -52,22 +51,12 @@ public class KafkaStreamService {
 		KStream<String, StockTrade> source = builder.stream(topic, Consumed.with(Serdes.String(),
 				Serdes.serdeFrom(new StockTradeSerializer(), new StockTradeDeserializer())));
 
-//		source.groupBy((k, v) -> v.getTimestamp()).count().toStream().to(topic + "-out",
-//				Produced.with(Serdes.String(), Serdes.Long()));
-
-		// source.groupBy((k, v) -> KeyValue.pair(k, v.getTotTrdVal()),
-		// Produced.with(Serdes.String(), Serdes.Double())).aggregate(initializer,
-		// adder, subtractor);
-
-		// WORKS FINE: Putting output to a topic
 		KTable<String, Double> result = source.map((k, v) -> KeyValue.pair(k, v.getTotTrdVal())).groupByKey()
 				.reduce((aggVal, newVal) -> aggVal < newVal ? newVal : aggVal);
 
 		result.toStream().foreach((k, v) -> {
 			producer.send(new ProducerRecord<String, Double>(k, k, v));
 		});
-//		source.mapValues(StockTrade::getTotTrdVal).groupByKey()
-//				.reduce((aggVal, newVal) -> aggVal < newVal ? newVal : aggVal).toStream().to(topic + "-out");
 
 		final Topology topology = builder.build();
 		final KafkaStreams streams = new KafkaStreams(topology, configs());
@@ -91,13 +80,6 @@ public class KafkaStreamService {
 	private void start() throws Exception {
 		log.debug("start service");
 		stream();
-
-	}
-
-	private void close() throws Exception {
-		log.debug("close service");
-
-		// Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
 	}
 
 	private Properties configs() {
@@ -111,6 +93,9 @@ public class KafkaStreamService {
 		return props;
 	}
 
+	/*
+	 * Set topic name. Create a producer
+	 */
 	private void init() {
 		log.debug("init service");
 

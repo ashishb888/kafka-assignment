@@ -30,7 +30,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-@SuppressWarnings("unused")
 public class KafkaService {
 
 	private Producer<String, StockTrade> producer;
@@ -42,6 +41,9 @@ public class KafkaService {
 	private AppProperties ap;
 	private String topic;
 
+	/*
+	 * Get all files from source directory and call task method for each file
+	 */
 	private void send(int nThreads) throws Exception {
 		log.debug("send service");
 
@@ -66,6 +68,10 @@ public class KafkaService {
 		es.shutdown();
 	}
 
+	/*
+	 * Read data files, deserialise records to StockTrade object and send them to
+	 * the Kafka as JSON
+	 */
 	private void task(String file, CountDownLatch latch) throws IOException {
 		log.debug("task service");
 		log.debug("file: " + file);
@@ -84,8 +90,6 @@ public class KafkaService {
 		records.stream().forEach(r -> {
 			producer.send(new ProducerRecord<String, StockTrade>(topic, r.getTimestamp(), r));
 		});
-
-		// producer.flush();
 
 		latch.countDown();
 	}

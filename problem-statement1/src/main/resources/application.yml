@@ -1,16 +1,17 @@
 spring:
   application:
-    name: problem-statement1
+    name: problem-statement1 #Name of applicaton
 
 logging:
   level:
     root: info
     assignments.kafka: debug
-  file: /var/tmp/apps/problem-statement1/problem-statement1
+  file: /var/tmp/apps/problem-statement1/problem-statement1 #Logging file path
 
 kafka:
   kafkaProducer:
-    bootstrap.servers: '172.17.5.36:7092'
+    #Kafka configuration changes according to the use cases
+    bootstrap.servers: '172.17.5.36:7092' #Brokers
     acks: 'all'
     batch.size: 150000
     buffer.memory: 33554432
@@ -22,8 +23,8 @@ kafka:
     value.serializer: 'assignments.kafka.common.serialization.StockTradeSerializer'
 
   metaData:
-    topic: ps1-cap17
+    topic: ps1-cap17 #Topic to send data
 
 app:
   paths:
-    filesDir: '/var/tmp/files1'
+    filesDir: '/var/tmp/files1' #Directory containing data files

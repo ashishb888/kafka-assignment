@@ -22,7 +22,13 @@ appfilesDir
 `mvn package`
 
 ###### Running
-`$JAVA_HOME/bin/java -jar problem-statement1-0.0.1-SNAPSHOT.jar nThreads`
+<pre>
+Make a directory e.g. problem-statement1
+Copy problem-statement1-0.0.1-SNAPSHOT.jar & application.yml to above created directory
+Change configurations (as needed) in application.yml
+Run below command from the application directory i.e. problem-statement1
+$JAVA_HOME/bin/java -jar problem-statement1-0.0.1-SNAPSHOT.jar nThreads
+</pre>
 
 ## Problem statement 2
 
@@ -43,7 +49,13 @@ topic
 `mvn package`
 
 ###### Running
-`$JAVA_HOME/bin/java -jar problem-statement2-0.0.1-SNAPSHOT.jar `
+<pre>
+Make a directory e.g. problem-statement2
+Copy problem-statement2-0.0.1-SNAPSHOT.jar & application.yml to above created directory
+Change configurations (as needed) in application.yml
+Run below command from the application directory i.e. problem-statement2
+$JAVA_HOME/bin/java -jar problem-statement2-0.0.1-SNAPSHOT.jar
+</pre>
 
 
 ###### Technical details

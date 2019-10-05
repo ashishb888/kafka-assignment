@@ -96,12 +96,12 @@ for i in {1..10} ; do cat cm09JAN2019bhav1.csv >> cm09JAN2019bhav.csv ; done
 
 ll
 total 7040
--rw-r----- 1 hdpusr nse  173580 Sep 24 15:37 cm07JAN2019bhav1.csv
--rw-r----- 1 hdpusr nse 1909380 Sep 24 15:38 cm07JAN2019bhav.csv
--rw-r----- 1 hdpusr nse  170744 Sep 24 15:39 cm08JAN2019bhav1.csv
--rw-r----- 1 hdpusr nse 1878184 Sep 24 15:39 cm08JAN2019bhav.csv
--rw-r----- 1 hdpusr nse  172625 Sep 24 15:39 cm09JAN2019bhav1.csv
--rw-r----- 1 hdpusr nse 1898875 Sep 24 15:39 cm09JAN2019bhav.csv
+-rw-r----- 1   173580 Sep 24 15:37 cm07JAN2019bhav1.csv
+-rw-r----- 1  1909380 Sep 24 15:38 cm07JAN2019bhav.csv
+-rw-r----- 1   170744 Sep 24 15:39 cm08JAN2019bhav1.csv
+-rw-r----- 1  1878184 Sep 24 15:39 cm08JAN2019bhav.csv
+-rw-r----- 1   172625 Sep 24 15:39 cm09JAN2019bhav1.csv
+-rw-r----- 1  1898875 Sep 24 15:39 cm09JAN2019bhav.csv
 
 du -sh
 6.6M    .

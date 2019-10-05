@@ -5,7 +5,7 @@ spring:
 logging:
   level:
     root: info
-    assignments.kafka: debug
+    assignments.kafka: info
   file: /var/tmp/apps/problem-statement2/problem-statement2 #Logging file path
 
 kafka:
